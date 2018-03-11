@@ -27,6 +27,7 @@ class Modal extends Component {
                 <br/><br/>
                 <textarea onChange={this.props.enterContentHandler1}></textarea>
                 <textarea onChange={this.props.enterContentHandler2}></textarea>
+                <input onChange={this.props.changeImgHandler} />
             </div>
         </div>
     );

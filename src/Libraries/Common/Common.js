@@ -17,3 +17,14 @@ export const getObjValue = (obj, ...params) => {
 
     return newVal;
 }
+
+
+export const updateStateForCurrentMarquee = (motherComponent, marqueePropToChange, value) => {
+    const currentState = motherComponent.state;
+    const area = currentState.currentArea;
+    const currentMarqueeId = currentState.currentMarqueeId;
+    const copyAreaContent = {...currentState.areaContent};
+    const marqueeConf = getObjValue(copyAreaContent, area, currentMarqueeId);
+    copyAreaContent[area] = { ...copyAreaContent[area], [currentMarqueeId]: {...marqueeConf, [marqueePropToChange]: value} }
+    motherComponent.setState({areaContent: copyAreaContent});
+}

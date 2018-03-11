@@ -8,7 +8,7 @@ import Footer from './Layout/Footer/Footer';
 import Modal from './Components/Modal/Modal';
 import MarqueeChoices from './Components/Marquee/MarqueeChoices.css';
 import MarqueeTypos from './Components/Marquee/MarqueeTypo.css';
-import {getObjValue} from './Libraries/Common/Common';
+import {updateStateForCurrentMarquee} from './Libraries/Common/Common';
 
 class App extends Component {
   state = {
@@ -36,39 +36,23 @@ class App extends Component {
   }
 
   enterContentHandler1 = (event) => {
-    const area = this.state.currentArea;
-    const currentMarqueeId =this.state.currentMarqueeId;
-    const copyAreaContent = {...this.state.areaContent};
-    const marqueeConf = getObjValue(copyAreaContent, area, currentMarqueeId);
-    copyAreaContent[area] = { ...copyAreaContent[area], [currentMarqueeId]: {...marqueeConf, content1: event.target.value} }
-    this.setState({areaContent: copyAreaContent});
+    updateStateForCurrentMarquee(this, 'content1', event.target.value);
   }
 
   enterContentHandler2 = (event) => {
-    const area = this.state.currentArea;
-    const currentMarqueeId =this.state.currentMarqueeId;
-    const copyAreaContent = {...this.state.areaContent};
-    const marqueeConf = getObjValue(copyAreaContent, area, currentMarqueeId);
-    copyAreaContent[area] = { ...copyAreaContent[area], [currentMarqueeId]: {...marqueeConf, content2: event.target.value} }
-    this.setState({areaContent: copyAreaContent});
+    updateStateForCurrentMarquee(this, 'content2', event.target.value);
   }
 
   changeMarqueeStyleHandler = (event) => {
-    const area = this.state.currentArea;
-    const currentMarqueeId =this.state.currentMarqueeId;
-    const copyAreaContent = {...this.state.areaContent};
-    const marqueeConf = getObjValue(copyAreaContent, area, currentMarqueeId);
-    copyAreaContent[area] = { ...copyAreaContent[area], [currentMarqueeId]: {...marqueeConf, classType: event.target.value} }
-    this.setState({areaContent: copyAreaContent});
+    updateStateForCurrentMarquee(this, 'classType', event.target.value);
   }
 
   changeMarqueeTypoHandler = (event) => {
-    const area = this.state.currentArea;
-    const currentMarqueeId =this.state.currentMarqueeId;
-    const copyAreaContent = {...this.state.areaContent};
-    const marqueeConf = getObjValue(copyAreaContent, area, currentMarqueeId);
-    copyAreaContent[area] = { ...copyAreaContent[area], [currentMarqueeId]: {...marqueeConf, typoType: event.target.value} }
-    this.setState({areaContent: copyAreaContent});
+    updateStateForCurrentMarquee(this, 'typoType', event.target.value);
+  }
+
+  changeImgHandler = (event) => {
+    updateStateForCurrentMarquee(this, 'imgSrc', event.target.value);
   }
 
   render() {
@@ -82,6 +66,7 @@ class App extends Component {
       marqueeTypos={Object.keys(MarqueeTypos)}
       changeMarqueeStyleHandler = {this.changeMarqueeStyleHandler} 
       changeMarqueeTypoHandler = {this.changeMarqueeTypoHandler}
+      changeImgHandler = {this.changeImgHandler}
       />
       <Header marquees={this.state.areaContent.Header} />
       <div className={appStyles.appBody}>
