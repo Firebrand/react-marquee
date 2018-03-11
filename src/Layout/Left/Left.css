@@ -1,0 +1,13 @@
+.left {
+    width: 230px;
+    list-style: none;
+    text-align: left;
+    order: -1;
+    margin: 0;
+  }
+
+  @media (max-width: 700px) {
+    .left {
+      width: 100%;
+    }
+  }

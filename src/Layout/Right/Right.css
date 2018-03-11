@@ -1,0 +1,9 @@
+.right {
+    width: 230px;
+  }
+
+  @media (max-width: 700px) {
+    .right {
+      width: 100%;
+    }
+  }

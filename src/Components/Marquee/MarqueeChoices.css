@@ -1,0 +1,43 @@
+.black {
+    padding: 20px;
+    background-color:black;
+    color: white;
+}
+
+
+.white {
+    padding: 20px;
+    background-color:white;
+    color: black;
+    margin:5px;
+    display: flex;
+}
+
+.white :global(.content1) {
+    flex: 1 0;
+}
+
+.white :global(.content2) {
+    flex: 1 0;
+}
+
+
+
+.white-small {
+    padding: 20px;
+    background-color:white;
+    color: black;
+    margin:5px;
+    width:33%;
+}
+
+.bare {
+    color: black;
+}
+
+
+.logo {
+    font-size: 35px;
+    color: gray;
+    padding: 5px;
+}
